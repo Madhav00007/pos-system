@@ -10,9 +10,12 @@ import jakarta.annotation.Resource;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
+@EqualsAndHashCode(callSuper = true)
 @Resource
 @JsonPropertyOrder({
 	"message",
@@ -27,7 +30,8 @@ import lombok.Setter;
     "updatedAt",
     "lastLogin"
 })
-public class UserResource {
+@Data
+public class UserResource extends ApiResponse{
 
 	private UUID id;
 	
@@ -44,10 +48,6 @@ public class UserResource {
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	private LocalDateTime lastLogin;
-	
-	private String message;
-	
-	private String jwtToken;
 	
 	public UUID getId() {
 		return id;
@@ -102,18 +102,6 @@ public class UserResource {
 	}
 	public void setLastLogin(LocalDateTime lastLogin) {
 		this.lastLogin = lastLogin;
-	}
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	public String getJwtToken() {
-		return jwtToken;
-	}
-	public void setJwtToken(String jwtToken) {
-		this.jwtToken = jwtToken;
 	}
 	
 	

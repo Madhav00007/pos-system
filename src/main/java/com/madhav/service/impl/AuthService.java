@@ -117,7 +117,6 @@ public class AuthService {
 	        throw new ApiException("Invalid id or email");
 	    }
 	    UserResource userResource = userUtils.convertUserIntoUserResource(user);
-//	    Authentication authentication = Authenticate(userResource);
 		Authentication authentication = new UsernamePasswordAuthenticationToken(userResource.getEmail(), userResource.getPassword());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 	    String jwtToken = jwtProvider.GenerateToken(authentication);
